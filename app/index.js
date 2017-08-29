@@ -7,7 +7,10 @@ import { createStore } from 'redux';
 // import rootReducer from './reducers';
 // import { ConnectedRouter } from 'react-router-dom'
 
-// const store = createStore(rootReducer);
+// const store = createStore(rootReducer, devTools);
+
+// const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
 const router = (
   // <ConnectedRouter>
     <App />
