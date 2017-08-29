@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Route, NavLink, Link } from 'react-router-dom'
-import MoviesList from '../MoviesList/MoviesList'
+import { Route, NavLink, Link } from 'react-router-dom';
+import MoviesList from '../MoviesList/MoviesList';
+import Controls from '../Controls/Controls';
 
 export default class App extends Component {
   constructor() {
     super();
+
     this.state = {
       moviesData: null,
       errorStatus: ''
@@ -38,15 +40,15 @@ export default class App extends Component {
 }
 
   render() {
+    // console.log("current-state",this.state.moviesData)
     const { moviesData } = this.state;
-    if(moviesData) {
+
       return (
         <div className='App'>
-        <h1>Movie Watcher</h1>
-        <MoviesList movies={moviesData}/>
+          <Controls />
+          {this.state.moviesData && <MoviesList movies={moviesData}/>}
         </div>
       )
-    }
-    return <div></div>
+  
   }
 }
