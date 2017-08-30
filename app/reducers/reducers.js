@@ -32,3 +32,9 @@ export const login = (state = initialState, action) => {
       return state
   }
 }
+
+// export const createNewUser = ( state = initialState, action) => {
+//   switch (action.type) {
+//     case ''
+//   }
+// }
