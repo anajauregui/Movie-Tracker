@@ -1,0 +1,29 @@
+.controls-container {
+  width: 100%;
+  height: 10vh;
+  background: red;
+  position: relative;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-row-end: span 1;
+  box-shadow: inset 0px 0px 12px black;
+}
+
+.logo-container {
+  position: absolute;
+  top: 0px;
+  left:  0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.logo  {
+  font-family: 'Six Caps', sans-serif;
+  color: white;
+  font-size: 65px;
+  font-weight: 100;
+}

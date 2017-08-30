@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import MoviesList from '../MoviesList/MoviesList';
 import Controls from '../Controls/Controls';
+import Background from '../Background/Background';
 
 import { connect } from 'react-redux';
 import { fetchMovieData } from '../../actions/index';
@@ -66,6 +67,7 @@ class App extends Component {
 
       return (
         <div className='App'>
+          <Background />
           <Controls />
           <MoviesList movies={this.props.data}/>
         </div>
