@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import MoviesList from '../MoviesList/MoviesList';
 import Controls from '../Controls/Controls';
+import Background from '../Background/Background';
 
 export default class App extends Component {
   constructor() {
@@ -45,10 +46,11 @@ export default class App extends Component {
 
       return (
         <div className='App'>
+          <Background />
           <Controls />
           {this.state.moviesData && <MoviesList movies={moviesData}/>}
         </div>
       )
-  
+
   }
 }

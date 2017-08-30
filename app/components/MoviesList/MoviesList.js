@@ -7,8 +7,10 @@ const MoviesList = ({movies}) => {
   const Movies = movies.map((movie, i) => <Movie key={i} {...movie} />)
 
   return (
-    <div className='movies-list'>
-      {Movies}
+    <div>
+      <section className='movies-list-container'>
+        {Movies}
+      </section>
     </div>
   )
 }
