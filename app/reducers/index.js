@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux'
-import { fetchError, movies } from './reducers';
+import { fetchError, movies, login } from './reducers';
 
 const rootReducer = combineReducers({
   // fetchError,
-  movies
+  movies,
+  login
 })
 
 export default rootReducer

@@ -17,3 +17,18 @@ export const movies = (state = [], action) => {
       return state;
   }
 }
+
+const initialState = {
+  email: '',
+  password: ''
+}
+
+export const login = (state = initialState, action) => {
+  switch (action.type) {
+    case 'LOGIN_SUCCESS':
+      return {email: action.email, password: action.password}
+
+    default:
+      return state
+  }
+}
