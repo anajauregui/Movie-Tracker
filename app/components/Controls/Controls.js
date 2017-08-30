@@ -6,10 +6,7 @@ export default class Controls extends Component {
     super();
   }
 
-
   render() {
-
-
     return(
       <div>
         <section className='controls-container'>

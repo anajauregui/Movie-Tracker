@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Movie = ({title, release_date, overview, backdrop_path, vote_average}) => {
-  // console.log(backdrop_path)
   return (
     <div className='movie'>
       <div className='no-image-container'>
