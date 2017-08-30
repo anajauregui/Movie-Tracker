@@ -2,32 +2,17 @@ import React, { Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import MoviesList from '../MoviesList/MoviesList';
 import Controls from '../Controls/Controls';
-import Background from '../Background/Background';
 
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { fetchMovieData } from '../../actions/index';
 
-class App extends Component {
-  // constructor() {
-  //   super();
-  //
-  //   this.state = {
-  //     moviesData: null,
-  //     errorStatus: ''
-  //   }
-  //
-  //   this.fetchMovies = this.fetchMovies.bind(this);
-  // }
+export default class App extends Component {
+
 
   componentDidMount() {
     this.props.fetchData('https://api.themoviedb.org/3/movie/now_playing?api_key=2e3e042d41662d924dd805ae004b2106&language=en-US&page=1')
   }
 
-  // fetchMovies(url) {
-  //   fetch(url)
-  //     .then(data => (this.handleErrors(data.status), data.json()))
-  //     .then(data => this.setState({moviesData: data.results}))
-  // }
 
 //   handleErrors(status) {
 //   if (status === 400) {
@@ -53,43 +38,18 @@ class App extends Component {
     console.log(this.props);
     console.log("data",this.props.data.results);
     if (this.props.hasErrored) {
-            return <p>Sorry! There was an error loading the items</p>;
-        }
+        return <p>Sorry! There was an error loading the items</p>;
+      }
 
-        if (this.props.isLoading) {
-            return <p>Loading…</p>;
-        }
+    if (this.props.isLoading) {
+          return <p>Loading…</p>;
+      }
 
-
-
-    // console.log("current-state",this.state.moviesData)
-    // const { moviesData } = this.state;
-
-      return (
-        <div className='App'>
-          <Background />
-          <Controls />
-          <MoviesList movies={this.props.data}/>
-        </div>
-
-
-      )
-
+    return (
+      <div className='App'>
+        <Controls />
+        <MoviesList movies={this.props.data}/>
+      </div>
+    )
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    data: state.movies,
-    hasErrored: state.fetchError,
-    isLoading: state.fetchLoading
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: (url) => dispatch(fetchMovieData(url))
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
