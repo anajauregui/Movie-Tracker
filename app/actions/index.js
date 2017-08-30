@@ -13,7 +13,7 @@ export const fetchMovieData = (url) => {
         return response;
       })
       .then(response => response.json())
-      .then(data => dispatch(movieFetchSuccess(data)))
+      .then(data => dispatch(movieFetchSuccess(data.results)))
       .catch( () => dispatch(movieFetchError(true)))
   }
 }
