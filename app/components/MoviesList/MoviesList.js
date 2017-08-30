@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 const MoviesList = ({movies}) => {
 
-  const Movies = movies.map((movie, i) => <Movie key={i} {...movie} />)
+  const Movie = movies.map((movie, i) => <Movie key={i} {...movie} />)
 
   return (
     <div className='movies-list'>
-      {Movies}
+      {Movie}
     </div>
   )
 }
