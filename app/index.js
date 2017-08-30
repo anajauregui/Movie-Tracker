@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
-// import MovieIndex from './components/movieIndex';
+import AppContainer from './containers/AppContainer.js'
 import { Provider } from 'react-redux';
 // import { createStore } from 'redux';
 import configureStore from './store/configureStore'
@@ -20,6 +19,6 @@ const store = configureStore(devTools);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <AppContainer />
   </Provider>
   ,document.getElementById('main'))
