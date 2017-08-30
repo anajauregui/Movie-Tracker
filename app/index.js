@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import AppContainer from './containers/AppContainer.js'
+import App from './components/App/App';
 import { Provider } from 'react-redux';
-// import { createStore } from 'redux';
 import configureStore from './store/configureStore'
 import rootReducer from './reducers/index';
 // import { ConnectedRouter } from 'react-router-dom'
@@ -19,6 +18,6 @@ const store = configureStore(devTools);
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppContainer />
+    <App />
   </Provider>
   ,document.getElementById('main'))
