@@ -20,3 +20,30 @@ export const fetchMovieData = (url) => {
       // .catch( () => dispatch(movieFetchError(true)))
   }
 }
+
+export const loginSuccess = (user) => {
+  return {
+    type: 'LOGIN_SUCCESS',
+    user
+  }
+}
+
+// export const loginError = (email, password) => {
+//   return {
+//     type: 'LOGIN_ERROR',
+//     body: {email, password}
+//   }
+// }
+
+export const validateUser = (user) => {
+  return dispatch => {
+    fetch('http://localhost:3000/api/users', {
+          method: 'POST',
+          body: JSON.stringify(user),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => console.log(response))
+  }
+}

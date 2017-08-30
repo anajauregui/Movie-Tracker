@@ -13,10 +13,6 @@ export default class Controls extends Component {
           <div className='logo-container'>
             <h1 className='logo'>MovieTracker</h1>
           </div>
-          <form>
-            <input placeholder='Login'/>
-            <button>Submit</button>
-          </form>
         </section>
       </div>
     )

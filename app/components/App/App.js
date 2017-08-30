@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import MoviesListContainer from '../../containers/MoviesListContainer';
 import Controls from '../Controls/Controls';
+import LoginContainer from '../../containers/LoginContainer';
 import { fetchMovieData } from '../../actions/index';
 
 export default class App extends Component {
@@ -11,11 +12,12 @@ export default class App extends Component {
     // if (this.props.hasErrored) {
     //     return <p>Sorry! There was an error loading the items</p>;
     //   }
-    
+
     return (
       <div className='App'>
         <Controls />
-        <MoviesListContainer />
+        <Route exact path="/" component={MoviesListContainer}/>
+        <Route exact path="/login" component={LoginContainer}/>
       </div>
     )
   }
