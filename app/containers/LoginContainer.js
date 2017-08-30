@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { validateUser } from '../actions/index';
+import { validateUser, createNewUser } from '../actions/index';
 import Login from '../components/Login/Login';
 
 const mapStateToProps = (store) => {
@@ -10,7 +10,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginSubmit: (user) => dispatch(validateUser(user))
+    loginSubmit: (user) => dispatch(validateUser(user)),
+    createNewUser: (user) => dispatch(createNewUser(user))
   };
 }
 
