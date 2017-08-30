@@ -12,8 +12,6 @@ import createHistory from 'history/createBrowserHistory'
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-const store = configureStore(devTools);
-
 const history = createHistory()
 
 const store = createStore(
