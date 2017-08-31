@@ -6,11 +6,16 @@ import Background from '../Background/Background';
 import LoginContainer from '../../containers/LoginContainer';
 import CreateAccountContainer from '../../containers/CreateAccountContainer';
 import { fetchMovieData } from '../../actions/index';
+// import { connect } from 'react-redux';
 
 export default class App extends Component {
 
+  // loginPath() {
+  //
+  // }
 
   render() {
+    console.log(this.props);
     // if (this.props.hasErrored) {
     //     return <p>Sorry! There was an error loading the items</p>;
     //   }
