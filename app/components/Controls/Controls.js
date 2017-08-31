@@ -54,6 +54,9 @@ export default class Controls extends Component {
               <div onClick={ () => this.openMenu()} className='favorites-button button'>
                 <p className='favorites-button-title button-title'>FAVORITES</p>
               </div>
+              <div onClick={ () => this.openMenu()} className='favorites-button button'>
+                <p className='favorites-button-title button-title'>LOG OUT</p>
+              </div>
 
             </div>
           </div>
