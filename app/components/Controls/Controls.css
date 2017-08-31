@@ -30,12 +30,14 @@
 }
 
 .menu-button-container {
-  width: 83px;
-  height: 68px;
-  position: relative;
-  top: 16px;
-  left: 34%;
-  z-index: 100;
+  width: 56px;
+  height: 10vh;
+  margin-left: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /*background: green;*/
 }
 
 
@@ -47,6 +49,17 @@
   animation-delay: 0s;
   animation: spin 8s infinite linear;
   z-index: 100;
+  margin-top: 0px;
+}
+
+.menu-button-title  {
+  font-size: 11px;
+  color: white;
+  margin-top: 56px;
+}
+
+.menu-button-title:hover  {
+  cursor: pointer;
 }
 
 @keyframes spin {
@@ -154,7 +167,13 @@ to {transform: rotate(360deg);}
   justify-content: center;
   flex-direction: column;
   border-radius: 10px;
+  animation-name: fadeIn;
+  animation-duration: 2s;
 }
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
 .hide {
   display: none;
@@ -175,8 +194,9 @@ to {transform: rotate(360deg);}
   margin-top: 24px;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  box-shadow: inset 0px 0px 12px black;
+  transition: 1s;
+  border-radius: 22px;
+  box-shadow: 0px 0px 12px black;
 }
 
 .button-title {
@@ -185,6 +205,44 @@ to {transform: rotate(360deg);}
   color: white;
 }
 
+.button:hover  {
+  cursor: pointer;
+  /*border: solid 1px red;*/
+  /*background: white;
+  box-shadow: 0px 0px 12px red;*/
+  transform: scale(1.1);
+}
+
+/*.button:hover .button-title {
+  color: red;
+}*/
+
 .create-button-title  {
   font-size: 18px;
+}
+
+
+/***************************************
+media query 840
+****************************************/
+
+@media screen and (max-width: 840px) {
+
+  .menu-button-container  {
+    margin-left: 24%;
+  }
+
+}
+
+
+/***************************************
+media query 560
+****************************************/
+
+@media screen and (max-width: 560px) {
+
+  .menu-button-container  {
+    margin-left: 3%;
+  }
+
 }
