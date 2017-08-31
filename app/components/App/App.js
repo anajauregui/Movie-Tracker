@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import MoviesListContainer from '../../containers/MoviesListContainer';
 import Controls from '../Controls/Controls';
+import Background from '../Background/Background';
 import LoginContainer from '../../containers/LoginContainer';
 import { fetchMovieData } from '../../actions/index';
 
