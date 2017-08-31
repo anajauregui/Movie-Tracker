@@ -31,6 +31,11 @@ export default class Controls extends Component {
     }
   }
 
+  buyTickets()  {
+    this.openMenu();
+    window.open('https://www.fandango.com/');
+  }
+
   render() {
     return(
       <div>
@@ -40,9 +45,9 @@ export default class Controls extends Component {
               className='menu-button' src='http://targetphoto.yesvideo.com/images/hp/iconFilmReels.png'/>
 
           </div>
-          <div className='logo-container'>
+          <Link to = {'/'}  className='logo-container' style={{ textDecoration: 'none' }}>
             <h1 className='logo'>MovieTracker</h1>
-          </div>
+          </Link>
           <div className={this.state.menuOverlay}></div>
           <div className={this.state.menuStatus}>
             <div className={this.state.menuCard}>
@@ -58,6 +63,9 @@ export default class Controls extends Component {
               </div>
               <div onClick={ () => this.openMenu()} className='favorites-button button' style={{ textDecoration: 'none' }}>
                 <p className='favorites-button-title button-title'>LOG OUT</p>
+              </div>
+              <div onClick={() => this.buyTickets(this)} className='favorites-button button' style={{ textDecoration: 'none' }}>
+                <p className='favorites-button-title button-title'>BUY TICKETS</p>
               </div>
 
             </div>
