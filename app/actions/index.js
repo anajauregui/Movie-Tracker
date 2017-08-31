@@ -45,7 +45,7 @@ export const loginSubmit = (user) => {
             'Content-Type': 'application/json'
           }
         })
-        .then(response => loginSuccess(user,response.ok))
+        .then(response => dispatch(loginSuccess(user,response.ok)))
   }
 }
 
