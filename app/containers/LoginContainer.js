@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
-import { validateUser, createNewUser } from '../actions/index';
+import { loginSubmit } from '../actions/index';
 import Login from '../components/Login/Login';
 
-const mapStateToProps = (store) => {
+const mapStateToProps = (storeCurrentState) => {
   return {
-    loginBody: store.login
+    userLogin: storeCurrentState.login
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginSubmit: (user) => dispatch(validateUser(user)),
-    createNewUser: (user) => dispatch(createNewUser(user))
+    loginSubmit: (user) => dispatch(loginSubmit(user)),
   };
 }
 
