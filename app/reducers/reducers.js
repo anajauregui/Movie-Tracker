@@ -18,15 +18,17 @@ export const movies = (state = [], action) => {
   }
 }
 
-const initialState = {
-  email: '',
-  password: ''
+const userInitialState = {
+  userInfo: {email: '',
+  password: ''},
+  isLoggedIn: false
 }
 
-export const login = (state = initialState, action) => {
+export const login = (state = userInitialState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      return {email: action.email, password: action.password}
+      return
+        Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLogged})
 
     default:
       return state

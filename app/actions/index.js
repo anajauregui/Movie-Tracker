@@ -21,21 +21,22 @@ export const fetchMovieData = (url) => {
   }
 }
 
-// export const loginSuccess = (user) => {
-//   return {
-//     type: 'LOGIN_SUCCESS',
-//     user
-//   }
-// }
+export const loginSuccess = (user, isLoggedIn) => {
+  return {
+    type: 'LOGIN_SUCCESS',
+    user,
+    isLoggedIn
+  }
+}
 
-// export const loginError = (email, password) => {
-//   return {
-//     type: 'LOGIN_ERROR',
-//     body: {email, password}
-//   }
-// }
+export const loginError = (email, password) => {
+  return {
+    type: 'LOGIN_ERROR',
+    body: {email, password}
+  }
+}
 
-export const validateUser = (user) => {
+export const loginSubmit = (user) => {
   return dispatch => {
     fetch('http://localhost:3000/api/users', {
           method: 'POST',
@@ -44,7 +45,7 @@ export const validateUser = (user) => {
             'Content-Type': 'application/json'
           }
         })
-        .then(response => console.log(response))
+        .then(response => loginSuccess(user,response.ok))
   }
 }
 
