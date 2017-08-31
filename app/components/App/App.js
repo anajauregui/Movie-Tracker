@@ -16,6 +16,7 @@ export default class App extends Component {
 
     return (
       <div className='App'>
+        <Background />
         <Controls />
         <Route exact path="/" component={MoviesListContainer}/>
         <Route exact path="/login" component={LoginContainer}/>
