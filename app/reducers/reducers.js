@@ -21,12 +21,23 @@ export const movies = (state = [], action) => {
 const userLoginState = {
   userInfo: {email: '',
   password: ''},
-  isLoggedIn: false
+  isLoggedIn: false,
+  status: null
 }
 
 export const login = (state = userLoginState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
+      return Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLoggedIn, status: action.status})
+
+    default:
+      return state
+  }
+}
+
+export const logout = (state = userLoginState, action) => {
+  switch (action.type) {
+    case 'LOGOUT':
       return Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLoggedIn})
 
     default:
@@ -35,21 +46,21 @@ export const login = (state = userLoginState, action) => {
 }
 
 const newUserInitialState = {
-  userInfo: {
+  newUserInfo: {
     email: '',
     password: '',
     name: ''
   },
-  isNewAccount: false
+  isNewAccount: false,
+  status: null
 }
 
 export const newUser = ( state = newUserInitialState, action) => {
   switch (action.type) {
     case 'CREATE_NEW_USER':
-      return Object.assign({}, {newUserInfo: action.newUser, isNewAccount: action.isNewAccount})
+      return Object.assign({}, {newUserInfo: action.newUser, isNewAccount: action.isNewAccount, status: action.status})
 
       default:
         return state
   }
 }
-

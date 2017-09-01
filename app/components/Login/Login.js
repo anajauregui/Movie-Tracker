@@ -32,7 +32,7 @@ export default class Login extends Component {
       <div className='login-container'>
         <form className='login-form'>
           <p className='login-title'>USER LOGIN</p>
-          <p className='error'>{!isLoggedIn && userInfo.email !== '' ? 'Email and Password do not match' : ''}</p>
+          <p className='error'>{userLogin.status === 500 ? 'Email and Password do not match' : null}</p>
           <input className='input' placeholder=' Email'
             value={email}
             onChange= {e => this.setState({ email: e.target.value })}/>
