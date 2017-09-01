@@ -13,8 +13,6 @@ export default class CreateAccount extends Component {
   }
 
   render() {
-    console.log('props',this.props);
-    console.log('state',this.state);
     const { email, password, name} = this.state;
     const { createNewUser, newUser } = this.props
     const userInfo = {name: name, email: email.toLowerCase(), password: password}
@@ -27,7 +25,7 @@ export default class CreateAccount extends Component {
       <div className='create-container'>
         <form className='create-form'>
           <p className='create-title'>CREATE ACCOUNT</p>
-          <p className='error'>{!isCreated && userInfo.email !== '' ? "Email has already been used" : ''}</p>
+          <p className='error'>{newUser.status === 500 ? 'Email has already been used' : null}</p>
           <input className='input'placeholder=' Name'
             value={name}
             onChange= {e => this.setState({ name: e.target.value })}/>

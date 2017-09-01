@@ -16,7 +16,9 @@ export default class Controls extends Component {
 
   render() {
     const { menuOpen } = this.state;
-    const menuItems = ['login', 'create account', 'favorites', 'logout']
+    const { userLogout } = this.props;
+    const resetUser = {email: '', password: ''}
+    const menuItems = ['login', 'create account', 'favorites']
     const menu = menuItems.map((menu, i) => {
       return (
         <Link to ={`/${menu.replace(' ', '-')}`} key={i} onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
@@ -44,6 +46,9 @@ export default class Controls extends Component {
             <div className={menuOpen ? 'menu-controls' : 'hide'}>
               <p className='menu-title'>MENU</p>
               {menu}
+              <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
+                LOGOUT
+              </Link>
               <div onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
                 <p className='button-title'>BUY TICKETS</p>
               </div>

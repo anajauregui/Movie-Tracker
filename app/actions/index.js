@@ -21,11 +21,12 @@ export const fetchMovieData = (url) => {
   }
 }
 
-export const loginSuccess = (user, isLoggedIn) => {
+export const loginSuccess = (user, isLoggedIn, status) => {
   return {
     type: 'LOGIN_SUCCESS',
     user,
-    isLoggedIn
+    isLoggedIn,
+    status
   }
 }
 
@@ -36,16 +37,23 @@ export const loginSuccess = (user, isLoggedIn) => {
 //   }
 // }
 
+export const logout = (user, isLoggedIn) => {
+  type: 'LOGOUT',
+  user,
+  isLoggedIn
+}
 
-export const createNewUser = (newUser, isNewAccount) => {
+
+export const createNewUser = (newUser, isNewAccount, status) => {
   return {
     type: 'CREATE_NEW_USER',
     newUser,
-    isNewAccount
+    isNewAccount,
+    status
   }
 }
 
-export const loginSubmit = (user) => {
+export const loginSubmit = (user, status) => {
   return dispatch => {
     fetch('http://localhost:3000/api/users', {
           method: 'POST',
@@ -54,7 +62,7 @@ export const loginSubmit = (user) => {
             'Content-Type': 'application/json'
           }
         })
-        .then(response => dispatch(loginSuccess(user, response.ok)))
+        .then(response => dispatch(loginSuccess(user, response.ok, response.status)))
   }
 }
 
@@ -67,6 +75,6 @@ export const createdNewUser = (newUser) => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => dispatch(createNewUser(newUser, response.ok)))
+      .then(response => dispatch(createNewUser(newUser, response.ok, response.status)))
   }
 }
