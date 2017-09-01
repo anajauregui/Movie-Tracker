@@ -2,8 +2,6 @@
 .movies-list-container {
   width: 100%;
   height: 94vh;
-  /*background: yellow;*/
-  /*margin-top: 16px;*/
   grid-column-start: 1;
   grid-row-start: 2;
   grid-row-end: span 2;
@@ -12,8 +10,6 @@
   justify-content: center;
   align-items: center;
   overflow: scroll;
-  /*animation-name: fadeIn;
-  animation-duration: 4s;*/
 }
 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
