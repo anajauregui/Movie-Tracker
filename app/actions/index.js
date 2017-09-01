@@ -29,10 +29,18 @@ export const loginSuccess = (user, isLoggedIn) => {
   }
 }
 
-export const loginError = (email, password) => {
+// export const loginError = (email, password) => {
+//   return {
+//     type: 'LOGIN_ERROR',
+//     body: {email, password}
+//   }
+// }
+
+export const createNewUser = (newUser, isNewAccount) => {
   return {
-    type: 'LOGIN_ERROR',
-    body: {email, password}
+    type: 'CREATE_NEW_USER',
+    newUser,
+    isNewAccount
   }
 }
 
@@ -49,15 +57,15 @@ export const loginSubmit = (user) => {
   }
 }
 
-export const createNewUser = (user) => {
+export const createdNewUser = (newUser) => {
   return dispatch => {
     fetch('http://localhost:3000/api/users/new', {
       method: 'POST',
-      body: JSON.stringify(user),
+      body: JSON.stringify(newUser),
       headers: {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => console.log(response))
+      .then(response => dispatch(createNewUser(newUser)))
   }
 }
