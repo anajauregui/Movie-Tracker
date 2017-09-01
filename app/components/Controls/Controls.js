@@ -48,8 +48,8 @@ export default class Controls extends Component {
           <Link to = {'/'}  className='logo-container' style={{ textDecoration: 'none' }}>
             <h1 className='logo'>MovieTracker</h1>
           </Link>
-          <div className={this.state.menuOverlay}></div>
-          <div className={this.state.menuStatus}>
+          <div className={this.state.menuOverlay} onClick={ () => this.openMenu()}></div>
+          <div className={this.state.menuStatus} onClick={ () => this.openMenu()}>
             <div className={this.state.menuCard}>
               <p className='menu-title'>MENU</p>
               <Link to = {'/login'} onClick={ () => this.openMenu()} className='login-button button' style={{ textDecoration: 'none' }}>

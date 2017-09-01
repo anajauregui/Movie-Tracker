@@ -125,6 +125,10 @@ to {transform: rotate(360deg);}
   justify-content: center;
 }
 
+.menu-close:hover {
+  cursor: pointer;
+}
+
 .menu-close-animation {
   animation-name: menuSlideClose;
   animation-duration: 1s;
