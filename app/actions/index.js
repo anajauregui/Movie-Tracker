@@ -36,6 +36,7 @@ export const loginSuccess = (user, isLoggedIn) => {
 //   }
 // }
 
+
 export const createNewUser = (newUser, isNewAccount) => {
   return {
     type: 'CREATE_NEW_USER',

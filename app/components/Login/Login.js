@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 export default class Login extends Component {
   constructor() {
     super();
-
     this.state = {
       email: '',
       password: '',
@@ -33,6 +32,7 @@ export default class Login extends Component {
       <div className='login-container'>
         <form className='login-form'>
           <p className='login-title'>USER LOGIN</p>
+          <p className='error'>{!isLoggedIn && userInfo.email !== '' ? 'Email and Password do not match' : ''}</p>
           <input className='input' placeholder=' Email'
             value={email}
             onChange= {e => this.setState({ email: e.target.value })}/>

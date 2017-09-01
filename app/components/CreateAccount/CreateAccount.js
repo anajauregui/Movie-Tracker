@@ -27,6 +27,7 @@ export default class CreateAccount extends Component {
       <div className='create-container'>
         <form className='create-form'>
           <p className='create-title'>CREATE ACCOUNT</p>
+          <p className='error'>{!isCreated && userInfo.email !== '' ? "Email has already been used" : ''}</p>
           <input className='input'placeholder=' Name'
             value={name}
             onChange= {e => this.setState({ name: e.target.value })}/>
