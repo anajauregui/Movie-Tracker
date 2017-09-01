@@ -34,6 +34,16 @@ export const login = (state = userInitialState, action) => {
   }
 }
 
+export const createUser = (state = {}, action) => {
+  switch (action.type) {
+    case 'USER_CREATED':
+      return Object.assign({}, {user: action.user, isCreated: action.isCreated})
+
+    default:
+      return state
+  }
+}
+
 // export const createNewUser = ( state = initialState, action) => {
 //   switch (action.type) {
 //     case ''

@@ -29,10 +29,18 @@ export const loginSuccess = (user, isLoggedIn) => {
   }
 }
 
-export const loginError = (email, password) => {
+// export const loginError = (email, password) => {
+//   return {
+//     type: 'LOGIN_ERROR',
+//     body: {email, password}
+//   }
+// }
+
+export const createUser = (user, isCreated) => {
   return {
-    type: 'LOGIN_ERROR',
-    body: {email, password}
+    type: 'USER_CREATED',
+    user,
+    isCreated
   }
 }
 
@@ -58,6 +66,6 @@ export const createNewUser = (user) => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => console.log(response))
+      .then(response => dispatch(createUser(user, response.ok)))
   }
 }

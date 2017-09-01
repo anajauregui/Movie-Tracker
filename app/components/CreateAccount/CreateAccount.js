@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 
 export default class CreateAccount extends Component {
   constructor() {
@@ -15,7 +15,12 @@ export default class CreateAccount extends Component {
   render() {
     const { email, password, name} = this.state;
     const { createNewUser } = this.props
+    const { isCreated } = this.props.newUser
     const newUser = {name: name, email: email.toLowerCase(), password: password}
+
+    if(isCreated) {
+      return <Redirect to='/login'/>
+    }
 
     return(
       <div className='create-container'>

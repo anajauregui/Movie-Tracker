@@ -4,7 +4,7 @@ import CreateAccount from '../components/CreateAccount/CreateAccount';
 
 const mapStateToProps = (store) => {
   return {
-    loginBody: store.login
+    newUser: store.createUser
   }
 }
 
