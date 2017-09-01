@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers/index';
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { ConnectedRouter } from 'react-router-redux'
+import thunk from 'redux-thunk';
 import { Route } from 'react-router';
 import createHistory from 'history/createBrowserHistory'
+import App from './components/App/App';
+import rootReducer from './reducers/index';
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
