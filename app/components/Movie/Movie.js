@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Movie = ({title, release_date, overview, backdrop_path, vote_average}) => {
+const Movie = ({title, release_date, overview, poster_path, vote_average}) => {
   return (
     <div className='movie'>
       <div className='no-image-container'>
@@ -13,7 +13,7 @@ const Movie = ({title, release_date, overview, backdrop_path, vote_average}) => 
           <h2 className='movie-title'>{title}</h2>
         </div>
       </div>
-      <img className='movie-image' src={`https://image.tmdb.org/t/p/w500${backdrop_path}`} />
+      <img className='movie-image' src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
       <div className='info-container-background'></div>
       <div className='info-container'>
         <div className='favorite-button'>
