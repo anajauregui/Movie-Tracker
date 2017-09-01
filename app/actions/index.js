@@ -53,7 +53,7 @@ export const loginSubmit = (user) => {
             'Content-Type': 'application/json'
           }
         })
-        .then(response => dispatch(loginSuccess(user,response.ok)))
+        .then(response => dispatch(loginSuccess(user, response.ok)))
   }
 }
 
@@ -66,6 +66,6 @@ export const createdNewUser = (newUser) => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => dispatch(createNewUser(newUser)))
+      .then(response => dispatch(createNewUser(newUser, response.ok)))
   }
 }
