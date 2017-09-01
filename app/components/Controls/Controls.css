@@ -3,18 +3,18 @@
   height: 12vh;
   background: red;
   position: relative;
+  box-shadow: inset 0px 0px 12px black;
   grid-column-start: 1;
   grid-row-start: 1;
   grid-row-end: span 1;
-  box-shadow: inset 0px 0px 12px black;
 }
 
 .logo-container {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0px;
   left:  0px;
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,9 +24,9 @@
 
 .logo  {
   font-family: 'Six Caps', sans-serif;
-  color: white;
   font-size: 65px;
   font-weight: 100;
+  color: white;
 }
 
 .menu-button-container {
@@ -37,19 +37,16 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /*background: green;*/
 }
 
 
 .menu-button  {
   width: 102px;
   position: absolute;
-  /*top: 7px;
-  left: 32%;*/
+  margin-top: 0px;
+  z-index: 100;
   animation-delay: 0s;
   animation: spin 8s infinite linear;
-  z-index: 100;
-  margin-top: 0px;
 }
 
 .menu-button-title  {
@@ -75,11 +72,11 @@ to {transform: rotate(360deg);}
 .menu-overlay {
   width: 100%;
   height: 1000px;
-  position: absolute;
-  margin-top: -2000px;
-  left: 0;
   background: red;
   opacity: .8;
+  position: absolute;
+  left: 0;
+  margin-top: -2000px;
   z-index: 3;
 }
 
@@ -118,11 +115,10 @@ to {transform: rotate(360deg);}
   height: 1000px;
   position: absolute;
   margin-top: -1000px;
-  /*background: green;*/
-  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 
 .menu-close:hover {
@@ -161,16 +157,15 @@ to {transform: rotate(360deg);}
 .menu-controls {
   width: 300px;
   height: 500px;
-  position: absolute;
   background: white;
-  /* margin-top: -100px; */
-  top: 59px;
   box-shadow: 0px 0px 12px black;
+  border-radius: 10px;
+  position: absolute;
+  top: 59px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-radius: 10px;
   animation-name: fadeIn;
   animation-duration: 2s;
 }
@@ -194,13 +189,13 @@ to {transform: rotate(360deg);}
   width: 200px;
   height: 45px;
   background: red;
-  display: flex;
-  margin-top: 24px;
-  align-items: center;
-  justify-content: center;
   transition: 1s;
+  margin-top: 24px;
   border-radius: 22px;
   box-shadow: 0px 0px 12px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button-title {
@@ -211,15 +206,8 @@ to {transform: rotate(360deg);}
 
 .button:hover  {
   cursor: pointer;
-  /*border: solid 1px red;*/
-  /*background: white;
-  box-shadow: 0px 0px 12px red;*/
   transform: scale(1.1);
 }
-
-/*.button:hover .button-title {
-  color: red;
-}*/
 
 .create-button-title  {
   font-size: 18px;
