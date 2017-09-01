@@ -30,17 +30,17 @@ export default class Login extends Component {
     }
 
     return(
-      <div>
-        <form>
-          <input placeholder='Email'
+      <div className='login-container'>
+        <form className='login-form'>
+          <p className='login-title'>USER LOGIN</p>
+          <input className='input' placeholder=' Email'
             value={email}
             onChange= {e => this.setState({ email: e.target.value })}/>
-          <input placeholder='Password'
+          <input className='input' placeholder=' Password'
             value={password}
             onChange = {e => this.setState({ password: e.target.value})}/>
-          <div className='SubmitButton' onClick={() => this.login(userInfo)}>
-          <p>LOGIN</p>
-          </div>
+
+          <div className='submit-button' onClick={() => this.login(userInfo)}> <p className='submit-button-title'>LOGIN</p></div>
         </form>
       </div>
 

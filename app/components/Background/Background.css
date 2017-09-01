@@ -5,15 +5,14 @@
 .background-container  {
   width: 100%;
   height: 100vh;
-  position: absolute;
-  top: -3000px;
-  overflow: hidden;
-  z-index: -1000;
-  background: red;
   background: black;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 10vh 90vh;
+  position: absolute;
+  top: -3000px;
+  overflow: hidden;
+  z-index: -1000;
   animation-name: intro-fade;
   animation-duration: 9s;
 }
@@ -43,16 +42,14 @@
 }
 
 .intro-container  {
-  position: absolute;
-  left: 0px;
-  z-index: 11;
-  /*background: red;
-  opacity: .4;*/
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  left: 0px;
+  z-index: 11;
   animation-name: intro-scroll;
   animation-duration: 7s;
 }
@@ -70,14 +67,12 @@
 }
 
 .intro-logo-container {
-  /*width: 60%;
-  height: 30%;
-  background: white;*/
+
 }
 
 .intro-logo  {
   font-family: 'Six Caps', sans-serif;
-  color: white;
   font-size: 100px;
   font-weight: 100;
+  color: white;
 }
