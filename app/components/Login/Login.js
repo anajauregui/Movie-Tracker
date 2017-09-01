@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends Component {
   constructor() {
@@ -20,8 +21,13 @@ export default class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { loginSubmit } = this.props
+    const { loginSubmit, userLogin } = this.props
+    const { isLoggedIn } = userLogin
     const userInfo = {email: email.toLowerCase(), password: password}
+
+    if(isLoggedIn) {
+      return <Redirect to='/'/>
+    }
 
     return(
       <div className='login-container'>
@@ -33,6 +39,7 @@ export default class Login extends Component {
           <input className='input' placeholder=' Password'
             value={password}
             onChange = {e => this.setState({ password: e.target.value})}/>
+
           <div className='submit-button' onClick={() => this.login(userInfo)}> <p className='submit-button-title'>LOGIN</p></div>
         </form>
       </div>
