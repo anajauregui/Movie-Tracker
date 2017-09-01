@@ -9,11 +9,6 @@ export default class Controls extends Component {
     }
   }
 
-  buyTickets()  {
-    this.openMenu();
-    window.open('https://www.fandango.com/');
-  }
-
   render() {
     const { menuOpen } = this.state;
     const { userLogout } = this.props;
@@ -49,8 +44,8 @@ export default class Controls extends Component {
               <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
                 LOGOUT
               </Link>
-              <div onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
-                <p className='button-title'>BUY TICKETS</p>
+              <div onClick={() => window.open('https://www.fandango.com/')} className='button'>
+                BUY TICKETS
               </div>
             </div>
           </div>
