@@ -21,10 +21,10 @@ export default class Login extends Component {
   render() {
     const { email, password } = this.state;
     const { loginSubmit, userLogin } = this.props
-    const { isLoggedIn, userInfo } = userLogin
-    const user = {email: email.toLowerCase(), password: password}
+    // const { isLoggedIn } = userLogin
+    const userInfo = {email: email.toLowerCase(), password: password}
 
-    if(isLoggedIn) {
+    if(userLogin.isLoggedIn) {
       return <Redirect to='/'/>
     }
 
@@ -39,11 +39,9 @@ export default class Login extends Component {
           <input className='input' placeholder=' Password'
             value={password}
             onChange = {e => this.setState({ password: e.target.value})}/>
-
-          <div className='submit-button' onClick={() => this.login(user)}> <p className='submit-button-title'>LOGIN</p></div>
+          <div className='submit-button' onClick={() => this.login(userInfo)}> <p className='submit-button-title'>LOGIN</p></div>
         </form>
       </div>
-
     )
   }
 }

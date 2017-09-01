@@ -36,11 +36,12 @@ export const loginSuccess = (user, isLoggedIn) => {
 //   }
 // }
 
-export const createUser = (user, isCreated) => {
+
+export const createNewUser = (newUser, isNewAccount) => {
   return {
-    type: 'USER_CREATED',
-    user,
-    isCreated
+    type: 'CREATE_NEW_USER',
+    newUser,
+    isNewAccount
   }
 }
 
@@ -53,19 +54,19 @@ export const loginSubmit = (user) => {
             'Content-Type': 'application/json'
           }
         })
-        .then(response => dispatch(loginSuccess(user,response.ok)))
+        .then(response => dispatch(loginSuccess(user, response.ok)))
   }
 }
 
-export const createNewUser = (user) => {
+export const createdNewUser = (newUser) => {
   return dispatch => {
     fetch('http://localhost:3000/api/users/new', {
       method: 'POST',
-      body: JSON.stringify(user),
+      body: JSON.stringify(newUser),
       headers: {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => dispatch(createUser(user, response.ok)))
+      .then(response => dispatch(createNewUser(newUser, response.ok)))
   }
 }

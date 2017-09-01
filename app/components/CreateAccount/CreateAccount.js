@@ -8,17 +8,18 @@ export default class CreateAccount extends Component {
     this.state = {
       name: '',
       email: '',
-      password: '',
+      password: ''
     }
   }
 
   render() {
+    console.log('props',this.props);
+    console.log('state',this.state);
     const { email, password, name} = this.state;
-    const { createNewUser } = this.props
-    const { isCreated, userInfo } = this.props.newUser
-    const newUser = {name: name, email: email.toLowerCase(), password: password}
+    const { createNewUser, newUser } = this.props
+    const userInfo = {name: name, email: email.toLowerCase(), password: password}
 
-    if(isCreated) {
+    if(newUser.isNewAccount) {
       return <Redirect to='/login'/>
     }
 
@@ -36,11 +37,10 @@ export default class CreateAccount extends Component {
           <input className='input' placeholder=' Password'
             value={password}
             onChange = {e => this.setState({ password: e.target.value})}/>
-          <div className='create-new-account-button' onClick={() => createNewUser(newUser)
+          <div className='create-new-account-button' onClick={() => createNewUser(userInfo)
           }><p className='create-button2-title'>Create Account</p></div>
         </form>
       </div>
-
     )
   }
 }
