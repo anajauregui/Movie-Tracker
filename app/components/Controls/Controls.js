@@ -26,10 +26,10 @@ export default class Controls extends Component {
       <div>
         <section className='controls-container'>
           <div className='menu-button-container'>
-            <img onClick={() => this.setState({menuOpen: !menuOpen})}
+            <img onMouseEnter={() => this.setState({menuOpen: true})}
               className='menu-button' src='http://targetphoto.yesvideo.com/images/hp/iconFilmReels.png'/>
           </div>
-          <Link to = {'/'}  className='logo-container'>
+          <Link to ={'/'}  className='logo-container'>
             <h1 className='logo'>MovieTracker</h1>
           </Link>
           <div
@@ -39,13 +39,17 @@ export default class Controls extends Component {
             className={menuOpen ? 'menu-close menu-open' : 'menu-close menu-close-animation'}
             onClick={() => this.setState({menuOpen: !menuOpen})}>
             <div className={menuOpen ? 'menu-controls' : 'hide'}>
-              <p className='menu-title'>MENU</p>
+              <Link to ={'/'}><p className='menu-title'>MENU</p></Link>
+              <p className='home'>HOME</p>
               {menu}
               <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
                 LOGOUT
               </Link>
               <div onClick={() => window.open('https://www.fandango.com/')} className='button'>
                 BUY TICKETS
+              </div>
+              <div onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
+                CLOSE
               </div>
             </div>
           </div>

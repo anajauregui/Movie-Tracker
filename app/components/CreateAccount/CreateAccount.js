@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 export default class CreateAccount extends Component {
   constructor() {
@@ -24,7 +25,8 @@ export default class CreateAccount extends Component {
     return(
       <div className='create-container'>
         <form className='create-form'>
-          <p className='create-title'>CREATE ACCOUNT</p>
+          <Link to ={'/'}><p className='create-title'>CREATE ACCOUNT</p></Link>
+          <Link to ={'/'}><p className='home-login'>HOME</p></Link>
           <p className='error'>{newUser.status === 500 ? 'Email has already been used' : null}</p>
           <input className='input'placeholder=' Name'
             value={name}

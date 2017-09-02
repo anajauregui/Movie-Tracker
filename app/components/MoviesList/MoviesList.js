@@ -28,7 +28,7 @@ export default class MoviesList extends Component {
         <section className='fav-login-container'>
           <div className='fav-login-container-background' onClick={() => (this.notLoggedInFav(null))}></div>
           <form className='fav-login-form'>
-            <p className='fav-login-title'>SORRY</p>
+            <p className='fav-login-title' onClick={() => (this.notLoggedInFav(null))}>SORRY</p>
             <p className='fav-instructions'>You must be logged in or create a user account to access favorites.</p>
             <Link to = {'/login'} className='fav-login-button'
                 onClick={() => this.login(userInfo)}>
@@ -40,7 +40,7 @@ export default class MoviesList extends Component {
             </Link>
             <div className='fav-login-button'
                 onClick={() => (this.notLoggedInFav(null))}>
-              <p className='fav-login-button-title'>EXIT</p>
+              <p className='fav-login-button-title'>CLOSE</p>
             </div>
           </form>
         </section>

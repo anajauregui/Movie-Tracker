@@ -26,6 +26,13 @@
   margin-top: -70px;
 }
 
+.home-login {
+  font-size: 10px;
+  color: red;
+  margin: -5px 0 0 0;
+  text-decoration: underline;
+}
+
 .input  {
   width: 270px;
   height: 34px;
