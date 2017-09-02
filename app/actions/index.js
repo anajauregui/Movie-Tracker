@@ -21,21 +21,21 @@ export const fetchMovieData = (url) => {
   }
 }
 
-export const loginSuccess = (user, isLoggedIn, status) => {
+export const loginSuccess = (user, isLoggedIn, id, error) => {
   return {
     type: 'LOGIN_SUCCESS',
     user,
     isLoggedIn,
-    status
+    id
   }
 }
 
-// export const loginError = (email, password) => {
-//   return {
-//     type: 'LOGIN_ERROR',
-//     body: {email, password}
-//   }
-// }
+export const loginError = (hasErrored) => {
+  return {
+    type: 'LOGIN_ERROR',
+    hasErrored
+  }
+}
 
 export const logout = (user, isLoggedIn) => {
   type: 'LOGOUT',
@@ -44,12 +44,12 @@ export const logout = (user, isLoggedIn) => {
 }
 
 
-export const createNewUser = (newUser, isNewAccount, status) => {
+export const createNewUser = (newUser, isNewAccount, id) => {
   return {
     type: 'CREATE_NEW_USER',
     newUser,
     isNewAccount,
-    status
+    id,
   }
 }
 
@@ -59,10 +59,12 @@ export const loginSubmit = (user, status) => {
           method: 'POST',
           body: JSON.stringify(user),
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           }
         })
-        .then(response => dispatch(loginSuccess(user, response.ok, response.status)))
+          .then(response => response.json())
+          .then(response => dispatch(loginSuccess(user, response.status, response.id)))
+          .catch(response => dispatch(loginError(true)))
   }
 }
 
@@ -75,6 +77,22 @@ export const createdNewUser = (newUser) => {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => dispatch(createNewUser(newUser, response.ok, response.status)))
+      .then(response => response.json())
+      .then(response => dispatch(createNewUser(newUser, response.status, response.id, response.error)))
+  }
+}
+
+// {error: "Key (email)=(stu) already exists."}
+
+export const createFavorite = (movie) => {
+  return dispatch => {
+    fetch('http://localhost:3000/api/users/favorites/new', {
+      method: 'POST',
+      body: JSON.stringify(movie),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => console.log(response))
   }
 }

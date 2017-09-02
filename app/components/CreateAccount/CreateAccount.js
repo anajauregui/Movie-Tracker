@@ -18,7 +18,7 @@ export default class CreateAccount extends Component {
     const { createNewUser, newUser } = this.props
     const userInfo = {name: name, email: email.toLowerCase(), password: password}
 
-    if(newUser.isNewAccount) {
+    if(newUser.isNewAccount === 'success') {
       return <Redirect to='/login'/>
     }
 
@@ -27,7 +27,7 @@ export default class CreateAccount extends Component {
         <form className='create-form'>
           <Link to ={'/'}><p className='create-title'>CREATE ACCOUNT</p></Link>
           <Link to ={'/'}><p className='home-login'>HOME</p></Link>
-          <p className='error'>{newUser.status === 500 ? 'Email has already been used' : null}</p>
+          <p className='error'>{newUser.error ? 'Email has already been used' : null}</p>
           <input className='input'placeholder=' Name'
             value={name}
             onChange= {e => this.setState({ name: e.target.value })}/>
