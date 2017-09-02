@@ -1,12 +1,11 @@
 .movie  {
-  width: 500px;
-  height: 750px;
+  width: 300px;
+  height: 450px;
   background: black;
   margin: 10px;
   box-shadow: 0px 0px 12px black;
   border-top-right-radius: 20px;
   position: relative;
-  /*overflow: scroll;*/
 }
 
 .no-image-container {
@@ -19,6 +18,7 @@
   align-items: center;
   justify-content: center;
   z-index: 0;
+  border-top-right-radius: 20px;
 }
 
 .no-image {
@@ -29,55 +29,11 @@
   margin-bottom: 72px;
 }
 
-.movie-title-container  {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation-name: fadeIn;
-  animation-duration: 1.3s;
-  z-index: 2;
-}
-
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-
-.movie-title-background {
-  width: 100%;
-  height: 35px;
-  background: black;
-  opacity: .7;
-  position: absolute;
-  top: 158px;
-}
-
-.inner-title-container  {
-  position: absolute;
-  top: 160px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.movie-title  {
-  font-family: 'Biryani', sans-serif;
-  font-weight: 800;
-  color: white;
-  font-size: : 120%;
-}
-
-.movie:hover .movie-title-container  {
-  display: none;
-}
-
 .movie-image  {
   width: 100%;
   position: absolute;
   z-index: 1;
+  border-top-right-radius: 20px;
 }
 
 .info-container-background  {
@@ -89,12 +45,13 @@
   position: absolute;
   display: block;
   width: 100%;
-  height: 150%;
+  height: 100%;
   background: #666666;
-  opacity: .8;
+  opacity: .9;
   z-index: 2;
   animation-name: info-container-slide;
   animation-duration: .6s;
+  border-top-right-radius: 20px;
 }
 
 @keyframes info-container-slide {
@@ -104,8 +61,7 @@
   }
   100% {
     margin-right: 0px;
-    height: 150%;
-    /*transform: rotate(0deg);*/
+    height: 100%;
   }
 }
 
@@ -122,17 +78,20 @@
 }
 
 .favorite-button  {
-  width: 89px;
-  height: 33px;
+  /*width: 116px;
+  height: 43px;*/
   position: absolute;
   top: 4%;
-  left: 80%;
+  /*left: 75%;*/
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 120px;
   background: white;
   border: solid 1px black;
+  left: 66%;
+  width: 90px;
+  height: 35px;
 }
 
 .favorite-button:hover  {
@@ -142,10 +101,11 @@
 }
 
 .favorite-button-title  {
-  font-size: 14px;
+  /*font-size: 18px;*/
   font-weight: 700;
   color: red;
-  padding-top: 3px;
+  padding-top: 4px;
+  font-size: 15px;
 }
 
 .favorite-button:hover .favorite-button-title  {
@@ -153,76 +113,36 @@
 }
 
 .movie-title2 {
-  font-size: 120%;
+  /*font-size: 175%;*/
   color: white;
-  margin-top: 50px;
-  padding: 6px;
+  /*margin-top: 115px;*/
+  /*padding: 0 0 0 20px;*/
+  font-size: 110%;
+  margin-top: 73px;
+  padding: 0 0 0 15px;
 }
 
 .vote {
-  font-size: 88%;
+  /*font-size: 120%;*/
   color: white;
-  padding: 0 0 0 5px;
+  /*padding: 0 0 0 20px;*/
+  font-size: 86%;
+  padding: 0 0 0 15px;
 }
 
 .release {
-  font-size: 97%;
+  /*font-size: 108%;*/
   color: white;
-  padding: 0 0 0 5px;
+  /*padding: 0 0 0 20px;*/
+  font-size: 73%;
+  padding: 0 0 0 15px;
 }
 
 .overview {
-  font-size: 1%;
+  /*font-size: 85%;*/
   color: white;
-  padding: 5px;
-  padding: 0 0 0 5px;
-}
-
-
-/***************************************
-media query 1040
-****************************************/
-
-@media screen and (max-width: 1040px) {
-
-  .movie  {
-    width: 320px;
-    height: 169px;
-  }
-
-  .no-image {
-    font-size: 75px;
-  }
-
-  .movie-title-background {
-    top: 100px;
-    height: 20px;
-  }
-
-  .inner-title-container {
-    top: 100px;
-  }
-
-  .movie-title  {
-    font-size: 13px;
-  }
-
-  .favorite-button  {
-    left: 66%;
-  }
-
-  .movie-title2 {
-    font-size: 86%;
-    margin-top: 40px;
-    padding: 0 0 0 5px;
-  }
-
-  .vote {
-    font-size: 72%;
-  }
-
-  .release  {
-    font-size: 70%;
-  }
-
+  /*padding: 5px;*/
+  /*padding: 0 20px 0 20px;*/
+  font-size: 73%;
+  padding: 12px 20px 0 15px;
 }
