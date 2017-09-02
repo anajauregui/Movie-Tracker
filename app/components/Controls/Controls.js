@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import FavoritesContainer from '../../containers/FavoritesContainer';
+import LoginContainer from '../../containers/LoginContainer';
 
-export default class Controls extends Component {
+export class Controls extends Component {
   constructor() {
     super();
     this.state = {
@@ -11,9 +13,9 @@ export default class Controls extends Component {
 
   render() {
     const { menuOpen } = this.state;
-    const { userLogout } = this.props;
+    const { userLogout, userLogin } = this.props;
     const resetUser = {email: '', password: ''}
-    const menuItems = ['login', 'create account', 'favorites']
+    const menuItems = ['login', 'create account']
     const menu = menuItems.map((menu, i) => {
       return (
         <Link to ={`/${menu.replace(' ', '-')}`} key={i} onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
@@ -22,11 +24,13 @@ export default class Controls extends Component {
       )
     })
 
+    // console.log(this.props);
+
     return(
       <div>
         <section className='controls-container'>
           <div className='menu-button-container'>
-            <img onMouseEnter={() => this.setState({menuOpen: true})}
+            <img onClick={() => this.setState({menuOpen: !menuOpen})}
               className='menu-button' src='http://targetphoto.yesvideo.com/images/hp/iconFilmReels.png'/>
           </div>
           <Link to ={'/'}  className='logo-container'>
@@ -42,6 +46,9 @@ export default class Controls extends Component {
               <Link to ={'/'}><p className='menu-title'>MENU</p></Link>
               <p className='home'>HOME</p>
               {menu}
+              <Link to ={'/favorites'} onClick={() => (this.setState({menuOpen: !menuOpen}), this.props.getUserFavorites(userLogin.user_id))} className='button'>
+                FAVORITES
+              </Link>
               <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
                 LOGOUT
               </Link>
@@ -58,3 +65,5 @@ export default class Controls extends Component {
     )
   }
 }
+
+export default LoginContainer(FavoritesContainer(Controls))

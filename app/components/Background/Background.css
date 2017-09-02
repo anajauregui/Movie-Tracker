@@ -14,7 +14,7 @@
   overflow: hidden;
   z-index: -1000;
   animation-name: intro-fade;
-  animation-duration: 9s;
+  animation-duration: 4s;
 }
 
 @keyframes intro-fade {
@@ -31,7 +31,6 @@
     z-index: -1000;
   }
 }
-
 
 .background-video  {
   width: 100%;
@@ -51,7 +50,7 @@
   left: 0px;
   z-index: 11;
   animation-name: intro-scroll;
-  animation-duration: 7s;
+  animation-duration: 4s;
 }
 
 @keyframes intro-scroll {

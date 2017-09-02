@@ -1,10 +1,3 @@
-// export const movieFetchError = (bool) => {
-//     return {
-//         type: 'MOVIE_FETCH_ERROR',
-//         hasErrored: bool
-//     };
-// }
-
 export const movieFetchSuccess = (movies) => {
     return {
         type: 'MOVIE_FETCH_SUCCESS',
@@ -17,7 +10,6 @@ export const fetchMovieData = (url) => {
     fetch(url)
       .then(response => response.json())
       .then(data => dispatch(movieFetchSuccess(data.results)))
-      // .catch( () => dispatch(movieFetchError(true)))
   }
 }
 
@@ -43,17 +35,7 @@ export const logout = (user, isLoggedIn) => {
   isLoggedIn
 }
 
-
-export const createNewUser = (newUser, isNewAccount, id) => {
-  return {
-    type: 'CREATE_NEW_USER',
-    newUser,
-    isNewAccount,
-    id,
-  }
-}
-
-export const loginSubmit = (user, status) => {
+export const loginSubmit = (user) => {
   return dispatch => {
     fetch('http://localhost:3000/api/users', {
           method: 'POST',
@@ -63,8 +45,18 @@ export const loginSubmit = (user, status) => {
           }
         })
           .then(response => response.json())
-          .then(response => dispatch(loginSuccess(user, response.status, response.id)))
+          .then(response => dispatch(loginSuccess(user, response.status, response.data.id)))
           .catch(response => dispatch(loginError(true)))
+  }
+}
+
+export const createNewUser = (newUser, isNewAccount, id, error) => {
+  return {
+    type: 'CREATE_NEW_USER',
+    newUser,
+    isNewAccount,
+    id,
+    error
   }
 }
 
@@ -82,7 +74,13 @@ export const createdNewUser = (newUser) => {
   }
 }
 
-// {error: "Key (email)=(stu) already exists."}
+// export const selectedFavorite = (id, isSelected) => {
+//   return {
+//     type: 'SELECTED_FAVORITE',
+//     id,
+//     isSelected
+//   }
+// }
 
 export const createFavorite = (movie) => {
   return dispatch => {
@@ -93,6 +91,16 @@ export const createFavorite = (movie) => {
         'Content-Type': 'application/json'
       }
     })
+    .then(response => response.json())
     .then(response => console.log(response))
+    .catch(error => console.log(error))
+  }
+}
+
+export const getUserFavorites = (userId) => {
+  return dispatch => {
+    fetch(`http://localhost:3000/api/users/${userId}/favorites`)
+      .then(response => response.json())
+      .then(response => console.log(response))
   }
 }

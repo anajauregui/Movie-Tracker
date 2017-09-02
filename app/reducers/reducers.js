@@ -22,13 +22,13 @@ const userLoginState = {
   userInfo: {email: '',
   password: ''},
   isLoggedIn: false,
-  id: null,
+  user_id: null,
 }
 
-export const login = (state = userLoginState, action) => {
+export const loginSuccess = (state = userLoginState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      return Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLoggedIn, id: action.id})
+      return Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLoggedIn, user_id: action.id})
 
     default:
       return state
@@ -60,7 +60,7 @@ const newUserInitialState = {
     email: '',
     password: '',
     name: '',
-    id: null,
+    user_id: null,
     error: null
   },
   isNewAccount: null
@@ -69,7 +69,20 @@ const newUserInitialState = {
 export const newUser = ( state = newUserInitialState, action) => {
   switch (action.type) {
     case 'CREATE_NEW_USER':
-      return Object.assign({}, {newUserInfo: action.newUser, isNewAccount: action.isNewAccount, id: action.id, error: action.error})
+      return Object.assign({}, {newUserInfo: action.newUser, isNewAccount: action.isNewAccount, user_id: action.id, error: action.error})
+
+      default:
+        return state
+  }
+}
+
+export const selectedFavorite = (state = {id: null, isSelected: false}, action) => {
+  switch (action.type) {
+    case 'SELECTED_FAVORITE':
+      return {
+        id: action.id,
+        isSelected: action.isSelected
+      }
 
       default:
         return state
