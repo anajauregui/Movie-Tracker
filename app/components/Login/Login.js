@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import LoginContainer from '../../containers/LoginContainer'
+import LoginContainer from '../../containers/LoginContainer';
+import { Link } from 'react-router-dom'
 
 export class Login extends Component {
   constructor() {
@@ -31,7 +32,8 @@ export class Login extends Component {
     return(
       <div className='login-container'>
         <form className='login-form'>
-          <p className='login-title'>USER LOGIN</p>
+          <Link to ={'/'}><p className='login-title'>USER LOGIN</p></Link>
+          <Link to ={'/'}><p className='home-login'>HOME</p></Link>
           <p className='error'>{loginError ? 'Email and Password do not match' : null}</p>
           <input className='input' placeholder=' Email'
             value={email}
