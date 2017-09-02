@@ -22,16 +22,26 @@ const userLoginState = {
   userInfo: {email: '',
   password: ''},
   isLoggedIn: false,
-  status: null
+  id: null,
 }
 
 export const login = (state = userLoginState, action) => {
   switch (action.type) {
     case 'LOGIN_SUCCESS':
-      return Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLoggedIn, status: action.status})
+      return Object.assign({}, {userInfo: action.user, isLoggedIn: action.isLoggedIn, id: action.id})
 
     default:
       return state
+  }
+}
+
+export const loginError = (state = false, action) => {
+  switch (action.type) {
+    case 'LOGIN_ERROR':
+      return action.hasErrored
+
+      default:
+        return state
   }
 }
 
@@ -49,16 +59,17 @@ const newUserInitialState = {
   newUserInfo: {
     email: '',
     password: '',
-    name: ''
+    name: '',
+    id: null,
+    error: null
   },
-  isNewAccount: false,
-  status: null
+  isNewAccount: null
 }
 
 export const newUser = ( state = newUserInitialState, action) => {
   switch (action.type) {
     case 'CREATE_NEW_USER':
-      return Object.assign({}, {newUserInfo: action.newUser, isNewAccount: action.isNewAccount, status: action.status})
+      return Object.assign({}, {newUserInfo: action.newUser, isNewAccount: action.isNewAccount, id: action.id, error: action.error})
 
       default:
         return state

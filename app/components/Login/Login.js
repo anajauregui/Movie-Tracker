@@ -21,11 +21,10 @@ export class Login extends Component {
 
   render() {
     const { email, password } = this.state;
-    const { loginSubmit, userLogin } = this.props
-    // const { isLoggedIn } = userLogin
+    const { loginSubmit, userLogin, loginError } = this.props
     const userInfo = {email: email.toLowerCase(), password: password}
 
-    if(userLogin.isLoggedIn) {
+    if(userLogin.isLoggedIn === 'success') {
       return <Redirect to='/'/>
     }
 
@@ -33,7 +32,7 @@ export class Login extends Component {
       <div className='login-container'>
         <form className='login-form'>
           <p className='login-title'>USER LOGIN</p>
-          <p className='error'>{userLogin.status === 500 ? 'Email and Password do not match' : null}</p>
+          <p className='error'>{loginError ? 'Email and Password do not match' : null}</p>
           <input className='input' placeholder=' Email'
             value={email}
             onChange= {e => this.setState({ email: e.target.value })}/>
