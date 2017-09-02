@@ -3,7 +3,7 @@ import { loginSubmit } from '../actions/index';
 
 const mapStateToProps = (storeCurrentState) => {
   return {
-    userLogin: storeCurrentState.login,
+    userLogin: storeCurrentState.loginSuccess,
     loginError: storeCurrentState.loginError
   }
 }

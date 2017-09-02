@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import LoginContainer from '../../containers/LoginContainer';
 import MovieContainer from '../../containers/MovieContainer'
 
-export const Movie = ({title, release_date, overview, poster_path, vote_average, userLogin, favLogin, addFavorite, movie_id}) => {
+export const Movie = ({title, release_date, overview, poster_path, vote_average, id, favLogin, addFavorite, userLogin, selectedFavorite}) => {
 
-  const favMovie = {movie_id, title, poster_path, release_date, vote_average, overview,  }
-
+  const {user_id} = userLogin
+  const favMovie = {movie_id: id, user_id, title, poster_path, release_date, vote_average, overview}
+// console.log(selectedFavorite);
   return (
     <div className='movie'>
       <div className='no-image-container'>

@@ -5,7 +5,6 @@ import MoviesList from '../components/MoviesList/MoviesList';
 const mapStateToProps = (store) => {
   return {
     data: store.movies,
-    // hasErrored: store.fetchError,
   }
 }
 
