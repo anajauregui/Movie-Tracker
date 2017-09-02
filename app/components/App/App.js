@@ -3,7 +3,7 @@ import { Route, NavLink, Link } from 'react-router-dom';
 import MoviesListContainer from '../../containers/MoviesListContainer';
 import Controls from '../Controls/Controls';
 import Background from '../Background/Background';
-import LoginContainer from '../../containers/LoginContainer';
+import Login from '../Login/Login';
 import CreateAccountContainer from '../../containers/CreateAccountContainer';
 import { fetchMovieData } from '../../actions/index';
 
@@ -15,7 +15,7 @@ export default class App extends Component {
         <Background />
         <Controls />
         <Route exact path="/" component={MoviesListContainer}/>
-        <Route exact path="/login" component={LoginContainer}/>
+        <Route exact path="/login" component={Login}/>
         <Route exact path="/create-account" component={CreateAccountContainer}/>
       </div>
     )

@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LoginContainer from '../../containers/LoginContainer';
 
-const Movie = ({title, release_date, overview, poster_path, vote_average}) => {
+export const Movie = ({title, release_date, overview, poster_path, vote_average, userLogin, favLogin}) => {
+
+
+
   return (
     <div className='movie'>
       <div className='no-image-container'>
@@ -16,7 +20,7 @@ const Movie = ({title, release_date, overview, poster_path, vote_average}) => {
       <img className='movie-image' src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
       <div className='info-container-background'></div>
       <div className='info-container'>
-        <div className='favorite-button'>
+        <div className='favorite-button' onClick={ () => favLogin(userLogin.isLoggedIn)}>
           <p className='favorite-button-title'>FAVORITE</p>
         </div>
         <h2 className='movie-title2'>{title}</h2>
@@ -28,4 +32,4 @@ const Movie = ({title, release_date, overview, poster_path, vote_average}) => {
   )
 }
 
-export default Movie
+export default LoginContainer(Movie);
