@@ -1,18 +1,51 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LoginContainer from '../../containers/LoginContainer';
+import PropTypes from 'prop-types';
 
 export class Controls extends Component {
   constructor() {
     super();
     this.state = {
-      menuOpen: false
+      menuOpen: false,
+      favLogin: null
+    }
+  }
+
+  notLoggedInFav(bool)  {
+    this.setState({favLogin: bool})
+  }
+
+  falseFav()  {
+    if(this.state.favLogin === false) {
+      return (
+        <section className='fav-login-container'>
+          <Link to = {'/'}><div className='fav-login-container-background' onClick={() => (this.notLoggedInFav(null))}></div></Link>
+          <form className='fav-login-form'>
+            <Link to = {'/'}><p className='fav-login-title' onClick={() => (this.notLoggedInFav(null))}>SORRY</p></Link>
+            <p className='fav-instructions'>You must be logged in or create a user account to access favorites.</p>
+            <Link to = {'/login'} className='fav-login-button'
+                onClick={() => this.login(userInfo)}>
+              <p className='fav-login-button-title'>LOGIN</p>
+            </Link>
+            <Link to = {'/create-account'} className='fav-login-button'
+                onClick={() => this.login(userInfo)}>
+              <p className='fav-login-button-title'>CREATE ACCOUNT</p>
+            </Link>
+            <Link to = {'/'} className='fav-login-button'
+                onClick={() => (this.notLoggedInFav(null))}>
+              <p className='fav-login-button-title'>CLOSE</p>
+            </Link>
+          </form>
+        </section>
+      )
     }
   }
 
   render() {
     const { menuOpen } = this.state;
     const { userLogout } = this.props;
+    const { userLogin } = this.props
     const resetUser = {email: '', password: ''}
     const menuItems = ['login', 'create account']
     const menu = menuItems.map((menu, i) => {
@@ -25,6 +58,7 @@ export class Controls extends Component {
 
     return(
       <div>
+        {this.falseFav()}
         <section className='controls-container'>
           <div className='menu-button-container'>
             <img onClick={() => this.setState({menuOpen: !menuOpen})}
@@ -43,7 +77,7 @@ export class Controls extends Component {
               <Link to ={'/'}><p className='menu-title'>MENU</p></Link>
               <p className='home'>HOME</p>
               {menu}
-              <Link to ={'/favorites'} onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
+              <Link to ={'/favorites'} onClick={() => (this.setState({menuOpen: !menuOpen}), this.notLoggedInFav(userLogin.isLoggedIn))} className='button'>
                 FAVORITES
               </Link>
               <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
