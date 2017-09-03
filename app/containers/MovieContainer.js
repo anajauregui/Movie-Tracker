@@ -3,7 +3,7 @@ import { createFavorite } from '../actions/index';
 
 const mapStateToProps = (storeCurrentState) => {
   return {
-    selectedFavorite: storeCurrentState.selectedFavorite
+    selectedFavorite: storeCurrentState.selectedFavorite,
   }
 }
 

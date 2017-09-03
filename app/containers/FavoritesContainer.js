@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-// import {  } from '../actions/index';
+import { getUserFavorites } from '../actions/index';
 
-// const mapStateToProps = (storeCurrentState) => {
-//   return {
-//     selectedFavorite: storeCurrentState.selectedFavorite
-//   }
-// }
+const mapStateToProps = (storeCurrentState) => {
+  return {
+    userFavorites: storeCurrentState.userFavorites
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -13,4 +13,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 }
 
-export default connect(null, mapDispatchToProps)
+export default connect(mapStateToProps, mapDispatchToProps)

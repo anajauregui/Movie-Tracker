@@ -97,10 +97,18 @@ export const createFavorite = (movie) => {
   }
 }
 
+export const userFavorites = (array) => {
+  return {
+    type: 'USER_FAVORITES',
+    array
+  }
+}
+
 export const getUserFavorites = (userId) => {
   return dispatch => {
     fetch(`http://localhost:3000/api/users/${userId}/favorites`)
       .then(response => response.json())
-      .then(response => console.log(response))
+      .then(response => dispatch(userFavorites(response.data)))
+      .catch(error => console.log(error))
   }
 }

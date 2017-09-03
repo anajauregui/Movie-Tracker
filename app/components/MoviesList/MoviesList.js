@@ -2,24 +2,27 @@ import React, { Component } from 'react';
 import Movie from '../Movie/Movie';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import MoviesListContainer from '../../containers/MoviesListContainer'
+import LoginContainer from '../../containers/LoginContainer';
+import FavoritesContainer from '../../containers/FavoritesContainer'
 
-export default class MoviesList extends Component {
+export class MoviesList extends Component {
   constructor() {
     super();
     this.state = {
       favLogin: null
     }
-
   }
 
   componentDidMount() {
+    const { getUserFavorites, userLogin, userFavorites } = this.props
     this.props.fetchData('https://api.themoviedb.org/3/movie/now_playing?api_key=2e3e042d41662d924dd805ae004b2106&language=en-US&page=1')
+    if (userLogin.user_id) {getUserFavorites(userLogin.user_id)}
+
   }
 
   notLoggedInFav(bool)  {
-    this.setState({
-      favLogin: bool
-    })
+    this.setState({favLogin: bool})
   }
 
   falseFav()  {
@@ -49,8 +52,9 @@ export default class MoviesList extends Component {
   }
 
   render() {
-    const Movies = this.props.data.map((movie, i) => <Movie key={i} {...movie} favLogin={this.notLoggedInFav.bind(this)}/>)
-
+    const { data, userFavorites, favorites } = this.props
+    const moviesArray = favorites ? userFavorites : data
+    const Movies = moviesArray.map((movie, i) => <Movie key={i} {...movie} favLogin={this.notLoggedInFav.bind(this)}/>)
 
     return (
       <div>
@@ -62,3 +66,5 @@ export default class MoviesList extends Component {
     )
   }
 }
+
+export default FavoritesContainer(MoviesListContainer(LoginContainer(MoviesList)));

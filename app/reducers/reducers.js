@@ -88,3 +88,13 @@ export const selectedFavorite = (state = {id: null, isSelected: false}, action) 
         return state
   }
 }
+
+export const userFavorites = (state = [], action) => {
+  switch (action.type) {
+    case 'USER_FAVORITES':
+      return action.array
+
+    default:
+      return state
+  }
+}
