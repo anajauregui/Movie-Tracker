@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { fetchError, movies, loginSuccess, logout, newUser, loginError, selectedFavorite, userFavorites } from './reducers';
+import { fetchError, movies, loginSuccess, logout, newUser, loginError, userFavorites } from './reducers';
 
 const rootReducer = combineReducers({
   // fetchError,
@@ -8,7 +8,6 @@ const rootReducer = combineReducers({
   loginError,
   logout,
   newUser,
-  selectedFavorite,
   userFavorites
 })
 

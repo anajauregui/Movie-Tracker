@@ -76,23 +76,13 @@ export const newUser = ( state = newUserInitialState, action) => {
   }
 }
 
-export const selectedFavorite = (state = {id: null, isSelected: false}, action) => {
-  switch (action.type) {
-    case 'SELECTED_FAVORITE':
-      return {
-        id: action.id,
-        isSelected: action.isSelected
-      }
-
-      default:
-        return state
-  }
-}
-
 export const userFavorites = (state = [], action) => {
   switch (action.type) {
     case 'USER_FAVORITES':
       return action.array
+
+    case 'ADD_FAVORITE':
+      return [...state, action.movie]
 
     default:
       return state

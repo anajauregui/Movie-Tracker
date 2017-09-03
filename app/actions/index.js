@@ -74,13 +74,12 @@ export const createdNewUser = (newUser) => {
   }
 }
 
-// export const selectedFavorite = (id, isSelected) => {
-//   return {
-//     type: 'SELECTED_FAVORITE',
-//     id,
-//     isSelected
-//   }
-// }
+export const addFavorite = (movie) => {
+  return {
+    type: 'ADD_FAVORITE',
+    movie
+  }
+}
 
 export const createFavorite = (movie) => {
   return dispatch => {
@@ -92,7 +91,7 @@ export const createFavorite = (movie) => {
       }
     })
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => dispatch(addFavorite(movie)))
     .catch(error => console.log(error))
   }
 }
