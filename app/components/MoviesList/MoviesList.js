@@ -12,17 +12,45 @@ export class MoviesList extends Component {
     this.state = {
       favLogin: null
     }
+    this.notLoggedInFav = this.notLoggedInFav.bind(this)
   }
 
   componentDidMount() {
-    const { getUserFavorites, userLogin, userFavorites } = this.props
-    this.props.fetchData('https://api.themoviedb.org/3/movie/now_playing?api_key=2e3e042d41662d924dd805ae004b2106&language=en-US&page=1')
-    if (userLogin.user_id) {getUserFavorites(userLogin.user_id)}
+    const { getUserFavorites, userLogin, userFavorites, loginSubmit } = this.props
 
+    this.props.fetchData('https://api.themoviedb.org/3/movie/now_playing?api_key=2e3e042d41662d924dd805ae004b2106&language=en-US&page=1')
+
+    // if(localStorage.getItem('user')) {
+    //   const parsedUser = JSON.parse(localStorage.getItem('user'))
+    //   loginSubmit(parsedUser)
+    //   console.log(userLogin.user_id);
+    // }
+
+    userLogin.user_id ? getUserFavorites(userLogin.user_id) : null
   }
 
   notLoggedInFav(bool)  {
-    this.setState({favLogin: bool})
+    this.setState({
+      favLogin: bool
+    })
+  }
+
+  compareMovieArrays() {
+    const { data, userFavorites, favorites } = this.props
+    const moviesArray = favorites ? userFavorites : data
+
+    if(userFavorites.length > 0) {
+      const favoriteMovies = userFavorites.map(favMovie => favMovie.movie_id);
+
+      return moviesArray.map(movie => {
+        if(favoriteMovies.includes(movie.movie_id)) {
+          return Object.assign({}, movie, {isFavorite: true});
+        }
+        return movie;
+      });
+    } else {
+      return moviesArray
+    }
   }
 
   falseFav()  {
@@ -52,19 +80,17 @@ export class MoviesList extends Component {
   }
 
   render() {
-    const { data, userFavorites, favorites } = this.props
-    const moviesArray = favorites ? userFavorites : data
-    const Movies = moviesArray.map((movie, i) => <Movie key={i} {...movie} favLogin={this.notLoggedInFav.bind(this)}/>)
+    const Movies = this.compareMovieArrays().map((movie, i) => <Movie key={i} {...movie} favLogin={this.notLoggedInFav}/>)
 
-    return (
-      <div>
-        {this.falseFav()}
-        <section className='movies-list-container'>
-          {Movies}
-        </section>
-      </div>
-    )
+      return (
+        <div>
+          {this.falseFav()}
+          <section className='movies-list-container'>
+            {Movies}
+          </section>
+        </div>
+      )
+    }
   }
-}
 
 export default FavoritesContainer(MoviesListContainer(LoginContainer(MoviesList)));
