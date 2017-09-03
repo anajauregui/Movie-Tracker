@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoginContainer from '../../containers/LoginContainer';
-import MovieContainer from '../../containers/MovieContainer'
+import MovieContainer from '../../containers/MovieContainer';
+import FavoritesContainer from '../../containers/FavoritesContainer';
 
-export const Movie = ({title, release_date, overview, poster_path, vote_average, id, favLogin, addFavorite, userLogin, selectedFavorite}) => {
-
+export const Movie = ({title, release_date, overview, poster_path, vote_average, id, favLogin, addFavorite, userLogin, userFavorites}) => {
   const {user_id} = userLogin
   const favMovie = {movie_id: id, user_id, title, poster_path, release_date, vote_average, overview}
-// console.log(selectedFavorite);
+
+  function checkFavorite(favorites) {
+    const duplicates = favorites.filter(movie => movie.title === favMovie.title)
+    console.log('duplicates', duplicates)
+    if(!duplicates.length) {addFavorite(favMovie)}
+  }
+
   return (
     <div className='movie'>
       <div className='no-image-container'>
@@ -16,7 +22,7 @@ export const Movie = ({title, release_date, overview, poster_path, vote_average,
       <img className='movie-image' src={`https://image.tmdb.org/t/p/w500${poster_path}`} />
       <div className='info-container-background'></div>
       <div className='info-container'>
-        <div className='favorite-button' onClick={ () => userLogin.isLoggedIn ? addFavorite(favMovie) : favLogin(userLogin.isLoggedIn)}>
+        <div className='favorite-button' onClick={ () => userLogin.isLoggedIn ? checkFavorite(userFavorites) : favLogin(userLogin.isLoggedIn)}>
           <p className='favorite-button-title'>FAVORITE</p>
         </div>
         <h2 className='movie-title2'>{title}</h2>
@@ -28,4 +34,4 @@ export const Movie = ({title, release_date, overview, poster_path, vote_average,
   )
 }
 
-export default MovieContainer(LoginContainer(Movie));
+export default FavoritesContainer(MovieContainer(LoginContainer(Movie)));

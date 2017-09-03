@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import FavoritesContainer from '../../containers/FavoritesContainer';
 import LoginContainer from '../../containers/LoginContainer';
 
 export class Controls extends Component {
@@ -13,7 +12,7 @@ export class Controls extends Component {
 
   render() {
     const { menuOpen } = this.state;
-    const { userLogout, userLogin } = this.props;
+    const { userLogout } = this.props;
     const resetUser = {email: '', password: ''}
     const menuItems = ['login', 'create account']
     const menu = menuItems.map((menu, i) => {
@@ -23,8 +22,6 @@ export class Controls extends Component {
         </Link>
       )
     })
-
-    // console.log(this.props);
 
     return(
       <div>
@@ -46,7 +43,7 @@ export class Controls extends Component {
               <Link to ={'/'}><p className='menu-title'>MENU</p></Link>
               <p className='home'>HOME</p>
               {menu}
-              <Link to ={'/favorites'} onClick={() => (this.setState({menuOpen: !menuOpen}), this.props.getUserFavorites(userLogin.user_id))} className='button'>
+              <Link to ={'/favorites'} onClick={() => this.setState({menuOpen: !menuOpen})} className='button'>
                 FAVORITES
               </Link>
               <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
@@ -66,4 +63,4 @@ export class Controls extends Component {
   }
 }
 
-export default LoginContainer(FavoritesContainer(Controls))
+export default LoginContainer(Controls)
