@@ -11,7 +11,7 @@
 export const movies = (state = [], action) => {
   switch (action.type) {
     case 'MOVIE_FETCH_SUCCESS':
-      return action.data
+      return action.data.map(movie => Object.assign({}, movie, {movie_id: movie.id, isFavorite: false}))
 
     default:
       return state;
@@ -82,7 +82,10 @@ export const userFavorites = (state = [], action) => {
       return action.array
 
     case 'ADD_FAVORITE':
-      return [...state, action.movie]
+      return [...state, Object.assign({}, action.movie, {isFavorite: true})]
+
+    case 'DELETE_FAVORITE':
+      return state.filter(movie => movie.movie_id !== action.movieId)
 
     default:
       return state

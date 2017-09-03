@@ -36,6 +36,7 @@ export const logout = (user, isLoggedIn) => {
 }
 
 export const loginSubmit = (user) => {
+  const stringifiedUser = JSON.stringify(user)
   return dispatch => {
     fetch('http://localhost:3000/api/users', {
           method: 'POST',
@@ -45,7 +46,7 @@ export const loginSubmit = (user) => {
           }
         })
           .then(response => response.json())
-          .then(response => dispatch(loginSuccess(user, response.status, response.data.id)))
+          .then(response => (dispatch(loginSuccess(user, response.status, response.data.id)), localStorage.setItem('user', stringifiedUser)))
           .catch(response => dispatch(loginError(true)))
   }
 }
@@ -109,5 +110,27 @@ export const getUserFavorites = (userId) => {
       .then(response => response.json())
       .then(response => dispatch(userFavorites(response.data)))
       .catch(error => console.log(error))
+  }
+}
+
+export const deleteFavorite = (movieId) => {
+  return {
+    type: 'DELETE_FAVORITE',
+    movieId
+  }
+}
+
+export const deleteUserFavorite = (userId, movieId) => {
+  return dispatch => {
+    fetch(`http://localhost:3000/api/users/${userId}/favorites/${movieId}`, {
+      method: `DELETE`,
+      body: JSON.stringify([userId, movieId]),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      // .then(response => console.log(response))
+      .then(response => dispatch(deleteFavorite(movieId)))
   }
 }

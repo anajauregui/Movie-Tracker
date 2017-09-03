@@ -80,7 +80,7 @@ export class Controls extends Component {
               <Link to ={'/favorites'} onClick={() => (this.setState({menuOpen: !menuOpen}), this.notLoggedInFav(userLogin.isLoggedIn))} className='button'>
                 FAVORITES
               </Link>
-              <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), userLogout(resetUser, false))} className='button'>
+              <Link to ={'/'} onClick={() => (this.setState({menuOpen: !menuOpen}), localStorage.removeItem('user'), userLogout(resetUser, false))} className='button'>
                 LOGOUT
               </Link>
               <div onClick={() => window.open('https://www.fandango.com/')} className='button'>
