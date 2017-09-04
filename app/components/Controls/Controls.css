@@ -1,3 +1,8 @@
+/**********************************************
+          Controls
+***********************************************/
+
+
 .controls-container {
   width: 100%;
   height: 12vh;
@@ -43,7 +48,6 @@
   flex-direction: column;
 }
 
-
 .menu-button  {
   width: 115px;
   position: absolute;
@@ -64,8 +68,8 @@
 }
 
 @keyframes spin {
-from {transform: rotate(0deg);}
-to {transform: rotate(360deg);}
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }
 
 .menu-button:hover {
@@ -76,11 +80,11 @@ to {transform: rotate(360deg);}
 .menu-overlay {
   width: 100%;
   height: 1000px;
+  margin-top: -2000px;
   background: red;
   opacity: .8;
   position: absolute;
   left: 0;
-  margin-top: -2000px;
   z-index: 3;
 }
 
@@ -196,20 +200,20 @@ to {transform: rotate(360deg);}
 }
 
 .button {
-  align-items: center;
-  background: red;
-  border-radius: 22px;
-  box-shadow: 0px 0px 12px black;
-  color: white;
-  display: flex;
-  font-size: 18px;
+  width: 200px;
   height: 45px;
-  justify-content: center;
+  background: red;
+  font-size: 18px;
+  color: white;
   margin-top: 24px;
   padding-top: 5px;
-  text-decoration: none;
+  border-radius: 22px;
+  box-shadow: 0px 0px 12px black;
   transition: 1s;
-  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .button:hover  {

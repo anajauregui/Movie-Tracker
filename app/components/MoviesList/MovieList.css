@@ -13,18 +13,18 @@
 }
 
 .fav-login-container  {
+  width: 100%;
+  height: 100vh;
   position: absolute;
   top:0px;
   left: 0px;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
   z-index: 1000;
-  animation-name: favSlide;
-  animation-duration: 1s;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  animation-name: favSlide;
+  animation-duration: 1s;
 }
 
 @keyframes favSlide {
@@ -37,11 +37,11 @@
 }
 
 .fav-login-container-background {
+  width: 100%;
+  height: 100vh;
   position: absolute;
   top:0px;
   left: 0px;
-  width: 100%;
-  height: 100vh;
   background: red;
   opacity: .8;
   z-index: -1;
