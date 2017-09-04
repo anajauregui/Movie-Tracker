@@ -20,14 +20,24 @@ export class MoviesList extends Component {
 
     this.props.fetchData('https://api.themoviedb.org/3/movie/now_playing?api_key=2e3e042d41662d924dd805ae004b2106&language=en-US&page=1')
 
-    // if(localStorage.getItem('user')) {
-    //   const parsedUser = JSON.parse(localStorage.getItem('user'))
-    //   loginSubmit(parsedUser)
-    //   console.log(userLogin.user_id);
-    // }
+    const savedUser = JSON.parse(localStorage.getItem('user'))
+
+    savedUser ? loginSubmit(savedUser) : null
 
     userLogin.user_id ? getUserFavorites(userLogin.user_id) : null
   }
+
+  componentWillReceiveProps(newProps) {
+    const { getUserFavorites, userLogin } = newProps
+    console.log(this.props);
+    console.log("this.props.userLogin.isLoggedIn",this.props.userLogin.isLoggedIn);
+    console.log("new.props.userLogin.isLoggedIn",newProps.userLogin.isLoggedIn);
+    // console.log("newprops.loginerror",newProps.userLogin.isLoggedIn);
+      if (this.props.userLogin.isLoggedIn !== newProps.userLogin.isLoggedIn) {
+      getUserFavorites(userLogin.user_id)
+    }
+  }
+// && newProps.loginError === false
 
   notLoggedInFav(bool)  {
     this.setState({
