@@ -91,10 +91,17 @@ export class MoviesList extends Component {
 
   render() {
     const Movies = this.compareMovieArrays().map((movie, i) => <Movie key={i} {...movie} favLogin={this.notLoggedInFav}/>)
+    const { userLogin } = this.props
 
       return (
         <div>
           {this.falseFav()}
+          <section className='welcome-container'>
+            <div className='welcome-box'>
+              <p className={userLogin.isLoggedIn ? 'welcome' : 'hide'}>welcome {userLogin.userInfo.email}</p>
+              <p className={userLogin.isLoggedIn ? 'hide' : 'welcome'}>You are not logged </p>
+            </div>
+          </section>
           <section className='movies-list-container'>
             {Movies}
           </section>

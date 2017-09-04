@@ -34,7 +34,7 @@ export default class CreateAccount extends Component {
           <input className='input' placeholder=' Email'
             value={email}
             onChange = {e => this.setState({ email: e.target.value})}/>
-          <input className='input' placeholder=' Password'
+          <input className='input' placeholder=' Password' type='password'
             value={password}
             onChange = {e => this.setState({ password: e.target.value})}/>
           <div className='create-new-account-button' onClick={() => createNewUser(userInfo)
