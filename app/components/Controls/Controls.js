@@ -56,6 +56,8 @@ export class Controls extends Component {
       )
     })
 
+    console.log('jason', userLogin.userInfo.email)
+
     return(
       <div>
         {this.falseFav()}
