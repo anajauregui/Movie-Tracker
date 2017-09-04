@@ -13,7 +13,7 @@ export const fetchMovieData = (url) => {
   }
 }
 
-export const loginSuccess = (user, isLoggedIn, id, error) => {
+export const loginSuccess = (user, isLoggedIn, id) => {
   return {
     type: 'LOGIN_SUCCESS',
     user,
