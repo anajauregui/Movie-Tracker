@@ -1,12 +1,11 @@
-import { movies } from '../reducers'
+import movies from '../reducers'
 
 describe('Movies reducer', () => {
-  it.skip('should have a default state', () => {
-    console.log(movies)
-    expect(movies(undefined, {})).toEqual([])
+  it('should have a default state', () => {
+    expect(movies(undefined, [])).toEqual({movies: []})
   })
 
-  it.skip('should give me a populated array', () => {
+  it('should give me a populated array', () => {
     const movie = [{
       type: 'MOVIE_FETCH_SUCCESS',
       data: {
@@ -27,7 +26,7 @@ describe('Movies reducer', () => {
         isFavorite:false
       }}]
 
-    expect(reducer.movies(undefined, movie).length).toEqual(1)
+    expect(movies(undefined, movie).length).toEqual(1)
   })
 })
 

@@ -1,4 +1,6 @@
 import * as action from '../actions';
+import mockMovies from './mockMovies';
+import fetchMock from 'fetch-mock';
 
 describe('movieFetchSuccess', () => {
   it('movieFetchSuccess should fetch movies', () => {
@@ -30,7 +32,16 @@ describe('movieFetchSuccess', () => {
 })
 
 describe('fetchMovieData', () => {
-  it()
+  it('gets the correct MovieData', () => {
+    fetchMock.get('https://api.themoviedb.org/3/movie/now_playing?api_key=2e3e042d41662d924dd805ae004b2106&language=en-US&page=1', {
+      status: 200,
+      body: mockMovies
+    })
+
+    expect(fetchMock.routes[0].method).toEqual('GET');
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].response.body).toEqual(mockMovies)
+  })
 })
 
 describe('loginSuccess', () => {
@@ -72,6 +83,19 @@ describe('logout', () => {
   })
 })
 
+describe('loginSubmit', () => {
+  it('should login a user', () => {
+    fetchMock.post('http://localhost:3000/api/users', {
+      method: 'POST',
+      body: {'email': 'troll59910@aol.com', 'password': 'password'}
+    })
+
+    expect(fetchMock.routes[0].method).toEqual('GET');
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].response.body).toEqual({})
+  })
+})
+
 describe('createNewUser', () => {
   it('createNewUser should return newUser, isNewAccount, id, error', () => {
     const createNewUser = {
@@ -83,6 +107,19 @@ describe('createNewUser', () => {
     }
 
     expect(action.createNewUser(true, 'success', 3, false)).toEqual(createNewUser)
+  })
+})
+
+describe('createdNewUser', () => {
+  it('should create a new user', () => {
+    fetchMock.post('http://localhost:3000/api/users/new', {
+      method: 'POST',
+      body: {'email': 'troll59910@aol.com', 'password': 'password'}
+    })
+
+    expect(fetchMock.routes[0].method).toEqual('GET');
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].response.body).toEqual({})
   })
 })
 
@@ -115,6 +152,37 @@ describe('addFavorite', () => {
   })
 })
 
+describe('createFavorite', () => {
+  it('should create a new favorite', () => {
+    const movie = {
+      vote_count:641,
+      id:396422,
+      video:false,
+      vote_average:6.5,
+      title:"Annabelle: Creation",
+      popularity:374.244615,
+      poster_path:"/tb86j8jVCVsdZnzf8I6cIi65IeM.jpg",
+      original_language:"en",
+      original_title:"Annabelle: Creation",
+      backdrop_path:"/o8u0NyEigCEaZHBdCYTRfXR8U4i.jpg",
+      adult:false,
+      overview:"Several years after the tragic death of their little girl, a dollmaker and his wife welcome a nun and several girls from a shuttered orphanage into their home, soon becoming the target of the dollmaker's possessed creation, Annabelle.",
+      release_date:"2017-08-03",
+      movie_id:396422,
+      isFavorite:false
+    }
+
+    fetchMock.post('http://localhost:3000/api/users/favorites/new', {
+      method: 'POST',
+      body: JSON.stringify(movie)
+    })
+
+    expect(fetchMock.routes[0].method).toEqual('GET');
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].response.body).toEqual({})
+  })
+})
+
 describe('userFavorites', () => {
   it('userFavorites should return user favorites', () => {
     const favorites= [{
@@ -144,6 +212,19 @@ describe('userFavorites', () => {
   })
 })
 
+describe('getUserFavorites', () => {
+  it('should get user favorites', () => {
+    fetchMock.get('`http://localhost:3000/api/users/3/favorites`', {
+      method: 'POST',
+      body: mockMovies
+    })
+
+    expect(fetchMock.routes[0].method).toEqual('GET');
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].response.body).toEqual(mockMovies)
+  })
+})
+
 describe('deleteFavorite', () => {
   it('deleteFavorite should delete a favorite', () => {
     const deleteFavorite = {
@@ -152,5 +233,18 @@ describe('deleteFavorite', () => {
     }
 
     expect(action.deleteFavorite(338423)).toEqual(deleteFavorite)
+  })
+})
+
+describe('deleteUserFavorite', () => {
+  it('should delete a user favorite', () => {
+    fetchMock.delete(`http://localhost:3000/api/users/3/favorites/458156`, {
+      method: 'DELETE',
+      body: JSON.stringify([3, 458156])
+    })
+
+    expect(fetchMock.routes[0].method).toEqual('GET');
+    expect(fetchMock._matchedCalls.length).toEqual(0);
+    expect(fetchMock.routes[0].response.body).toEqual({})
   })
 })
