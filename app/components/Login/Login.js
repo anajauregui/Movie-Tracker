@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 export class Login extends Component {
   constructor() {
     super();
+
     this.state = {
       email: '',
       password: '',

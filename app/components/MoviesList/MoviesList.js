@@ -9,6 +9,7 @@ import FavoritesContainer from '../../containers/FavoritesContainer'
 export class MoviesList extends Component {
   constructor() {
     super();
+
     this.state = {
       favLogin: null
     }
@@ -29,15 +30,11 @@ export class MoviesList extends Component {
 
   componentWillReceiveProps(newProps) {
     const { getUserFavorites, userLogin } = newProps
-    // console.log(this.props);
-    // console.log("this.props.userLogin.isLoggedIn",this.props.userLogin.isLoggedIn);
-    // console.log("new.props.userLogin.isLoggedIn",newProps.userLogin.isLoggedIn);
-    // console.log("newprops.loginerror",newProps.userLogin.isLoggedIn);
+
       if (this.props.userLogin.isLoggedIn !== newProps.userLogin.isLoggedIn) {
       getUserFavorites(userLogin.user_id)
     }
   }
-// && newProps.loginError === false
 
   notLoggedInFav(bool)  {
     this.setState({
