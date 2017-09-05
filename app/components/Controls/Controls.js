@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 export class Controls extends Component {
   constructor() {
     super();
+
     this.state = {
       menuOpen: false,
       favLogin: null
@@ -55,8 +56,6 @@ export class Controls extends Component {
         </Link>
       )
     })
-
-    console.log('jason', userLogin.userInfo.email)
 
     return(
       <div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import LoginContainer from '../../containers/LoginContainer';
 
-export default class CreateAccount extends Component {
+export class CreateAccount extends Component {
   constructor() {
     super();
 
@@ -13,13 +14,18 @@ export default class CreateAccount extends Component {
     }
   }
 
+  newUserLogin(user) {
+    this.props.loginSubmit(user);
+  }
+
   render() {
     const { email, password, name} = this.state;
     const { createNewUser, newUser } = this.props
     const userInfo = {name: name, email: email.toLowerCase(), password: password}
+    const user = {email: email.toLowerCase(), password: password}
 
     if(newUser.isNewAccount === 'success') {
-      return <Redirect to='/login'/>
+      return <Redirect to='/'/>
     }
 
     return(
@@ -37,10 +43,12 @@ export default class CreateAccount extends Component {
           <input className='input' placeholder=' Password' type='password'
             value={password}
             onChange = {e => this.setState({ password: e.target.value})}/>
-          <div className='create-new-account-button' onClick={() => createNewUser(userInfo)
+          <div className='create-new-account-button' onClick={() => (createNewUser(userInfo), this.newUserLogin(user))
           }><p className='create-button2-title'>Create Account</p></div>
         </form>
       </div>
     )
   }
 }
+
+export default LoginContainer(CreateAccount);
