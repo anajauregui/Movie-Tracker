@@ -10,7 +10,7 @@
     "build": "webpack --config ./webpack.config.js",
     "dev-server": "webpack-dev-server --hot --inline --content-base --history-api-fallback",
     "start": "node server.js",
-    "test": "react-scripts test --env=jsdom"
+    "test": "jest"
   },
   "keywords": [],
   "author": "Taylor Moore",

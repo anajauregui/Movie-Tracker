@@ -5,18 +5,18 @@ module.exports = {
   devtool: '#source-map',
   context: __dirname,
    entry: [
-     './src/index.js'
+     './app/index.js'
    ],
    output: {
-     path: path.join(__dirname, 'src'),
+     path: path.join(__dirname, 'app'),
      filename: 'bundle.js',
-     publicPath: '/src/'
+     publicPath: '/app/'
    },
    module: {
      loaders: [{
        test: /.jsx?$/,
        loader: 'babel-loader',
-       include: path.join(__dirname, 'src'),
+       include: path.join(__dirname, 'app'),
        exclude: /node_modules/,
        query: {
          presets: ['es2015', 'react', 'stage-2']
