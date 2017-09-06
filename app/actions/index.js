@@ -30,9 +30,11 @@ export const loginError = (hasErrored) => {
 }
 
 export const logout = (user, isLoggedIn) => {
-  type: 'LOGOUT',
-  user,
-  isLoggedIn
+  return {
+    type: 'LOGOUT',
+    user,
+    isLoggedIn
+  }
 }
 
 export const loginSubmit = (user) => {
