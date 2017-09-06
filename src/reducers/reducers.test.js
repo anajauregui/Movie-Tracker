@@ -1,7 +1,10 @@
-import movies from '../reducers'
+import { movies, loginSuccess, loginError, logout, newUser, userFavorites } from '../reducers'
+
+
 
 describe('Movies reducer', () => {
   it('should have a default state', () => {
+    console.log(movies, loginSuccess, loginError, logout, newUser, userFavorites)
     expect(movies(undefined, [])).toEqual({movies: []})
   })
 
