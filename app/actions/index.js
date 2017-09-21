@@ -1,4 +1,4 @@
-export const movieFetchSuccess = (movies) => {
+fexport const movieFetchSuccess = (movies) => {
     return {
         type: 'MOVIE_FETCH_SUCCESS',
         data: movies
@@ -12,7 +12,7 @@ export const fetchMovieData = (url) => {
       .then(data => dispatch(movieFetchSuccess(data.results)))
   }
 }
-
+ 
 export const loginSuccess = (user, isLoggedIn, id) => {
   return {
     type: 'LOGIN_SUCCESS',
