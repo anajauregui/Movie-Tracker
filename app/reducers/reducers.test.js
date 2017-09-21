@@ -1,7 +1,5 @@
 import * as reducers from './reducers'
 
-
-
 describe('Movies reducer', () => {
   it('should have a default state', () => {
     expect(reducers.movies(undefined, [])).toEqual([])
